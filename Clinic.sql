@@ -53,7 +53,15 @@ UserId int not null FOREIGN KEY REFERENCES dbo.Users(UserId),
 RoleId int not null FOREIGN KEY REFERENCES dbo.Roles(RoleId)
 );
 GO
-
+SET IDENTITY_INSERT UsersInRoles ON;
+INSERT INTO UsersInRoles(UserInRolesId, UserId,RoleId)
+VALUES(1, 1, 1);
+INSERT INTO UsersInRoles(UserInRolesId, UserId,RoleId)
+VALUES(2, 1, 3);
+INSERT INTO UsersInRoles(UserInRolesId, UserId,RoleId)
+VALUES(3, 2, 4);
+SET IDENTITY_INSERT UsersInRoles OFF;
+GO
 ---------Cabinets----------
 IF OBJECT_ID('Cabinets', 'U') IS NOT NULL
 DROP TABLE Cabinets;
@@ -84,12 +92,12 @@ UserId int not null FOREIGN KEY REFERENCES dbo.Users(UserId),
 );
 GO
 --SET IDENTITY_INSERT Employeers ON;
---INSERT INTO Employeers(DocId, DocName,DocRank,  DocSpecialisation)
---VALUES( 1,'Ivanov I.I.', 'Professor',  'Plastic Surgeon');
---INSERT INTO Doctors(DocId, DocName,DocRank,  DocSpecialisation)
+--INSERT INTO Employeers(DocId, DocName,DocRank,Â  DocSpecialisation)
+--VALUES( 1,'Ivanov I.I.', 'Professor',Â  'Plastic Surgeon');
+--INSERT INTO Doctors(DocId, DocName,DocRank,Â  DocSpecialisation)
 --VALUES( 2,'Than Xao', 'Assistant Nurse', 'Massage Therapist');
---INSERT INTO Doctors(DocId, DocName,DocRank,  DocSpecialisation)
---VALUES( 3,'Abrikosov A.A.', 'Head Chief of Medicine',  'Dermogastrotomy');
+--INSERT INTO Doctors(DocId, DocName,DocRank,Â  DocSpecialisation)
+--VALUES( 3,'Abrikosov A.A.', 'Head Chief of Medicine',Â  'Dermogastrotomy');
 --SET IDENTITY_INSERT Employeers OFF;
 --GO
 
